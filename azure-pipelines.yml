@@ -24,17 +24,25 @@ steps:
   inputs:
     PathtoPublish: '$(System.DefaultWorkingDirectory)'
 
-- task: CopyFiles@2
-  inputs:
-    SourceFolder: '$(System.DefaultWorkingDirectory)'
-    Contents: |
-      **\*.js
-      package.json
-    TargetFolder: '$(Build.ArtifactStagingDirectory)'
+# - task: CopyFiles@2
+#   inputs:
+#     SourceFolder: '$(System.DefaultWorkingDirectory)'
+#     Contents: |
+#       **\*.js
+#       package.json
+#     TargetFolder: '$(Build.ArtifactStagingDirectory)'
 
-- task: PublishBuildArtifacts@1
+# - task: PublishBuildArtifacts@1
 
-- task: ArchiveFiles@2
+# - task: ArchiveFiles@2
+#   inputs:
+#     rootFolderOrFile: '$(System.DefaultWorkingDirectory)'
+#     includeRootFolder: false
+
+- task: AzureRmWebAppDeployment@3
   inputs:
-    rootFolderOrFile: '$(System.DefaultWorkingDirectory)'
-    includeRootFolder: false
+    azureSubscription: '3e2f3c0b-dd25-4f2e-8acf-fc8d00ee2559'
+    WebAppName: 'nodekush'
+    Package: '$(System.DefaultWorkingDirectory)'
+    GenerateWebConfig: true
+    WebConfigParameters: '-Handler iisnode -NodeStartFile server.js -appType node'
