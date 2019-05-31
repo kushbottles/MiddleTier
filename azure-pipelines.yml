@@ -41,7 +41,7 @@ steps:
 
 - task: AzureRmWebAppDeployment@3
   inputs:
-    azureSubscription: '3e2f3c0b-dd25-4f2e-8acf-fc8d00ee2559'
+    azureSubscription: 'Pay-as-you-go (3e2f3c0b-dd25-4f2e-8acf-fc8d00ee2559)'
     WebAppName: 'nodekush'
     Package: '$(System.DefaultWorkingDirectory)'
     GenerateWebConfig: true
