@@ -20,11 +20,11 @@ steps:
     npm run build
   displayName: 'npm install and build'
 
-  - task: PublishBuildArtifacts@1
+- task: PublishBuildArtifacts@1
   inputs:
     PathtoPublish: '$(System.DefaultWorkingDirectory)'
 
-  - task: CopyFiles@2
+- task: CopyFiles@2
   inputs:
     SourceFolder: '$(System.DefaultWorkingDirectory)'
     Contents: |
